@@ -8,7 +8,7 @@ RUN apt-get update \
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && pip install --upgrade git+git://github.com/pypa/setuptools.git@v45.0.0 \
+    && pip install --upgrade git+git://github.com/pypa/setuptools.git@v44.0.0 \
     && pip install --upgrade "pip==1.5.4" \
     && hash -r \
     && pip install --no-cache-dir feedparser schedule
