@@ -331,7 +331,7 @@ def ensure_unicode(value, encoding):
 		except:
 			# If the encoding's invalid, at least preserve
 			# the byte stream.
-			return value.decode("ISO-8859-1")
+			return value #value.decode("ISO-8859-1")
 	elif isinstance(value, str) and type(value) is not str:
 		# This is a subclass of unicode (e.g.  BeautifulSoup's
 		# NavigableString, which is unpickleable in some versions of
