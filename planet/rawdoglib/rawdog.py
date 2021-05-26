@@ -942,7 +942,7 @@ class Config:
 			f = open(filename, "r")
 			for line in f:
 				try:
-					line =  str(line, get_system_encoding()) # line.decode(get_system_encoding())
+					line = line # line.decode(get_system_encoding())
 				except UnicodeDecodeError as e:
 					raise ConfigError("Character encoding problem in config file: " + filename + ": " + str(e))
 
