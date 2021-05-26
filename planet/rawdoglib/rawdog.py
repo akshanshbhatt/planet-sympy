@@ -184,6 +184,7 @@ def select_detail(details):
 			score = 0
 		if detail["value"] != "":
 			ds.append((score, detail))
+	print(ds)
 	ds.sort()
 
 	if len(ds) == 0:
