@@ -146,7 +146,7 @@ class Persisted:
 		if self.object.is_modified():
 			self.persister.log("Saving state file: ", self.filename)
 			newname = "%s.new-%d" % (self.filename, os.getpid())
-			newfile = open(newname, "w")
+			newfile = open(newname, "wb")
 			pickle.dump(self.object, newfile, pickle.HIGHEST_PROTOCOL)
 			newfile.close()
 			os.rename(newname, self.filename)
