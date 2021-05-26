@@ -1705,7 +1705,7 @@ __feeditems__
 		feeds = [(feed.get_html_name(config).lower(), feed)
 		         for feed in list(self.feeds.values())]
 
-		feeds.sort()
+		# feeds.sort()
 
 		feeditems = StringIO()
 		for key, feed in feeds:
@@ -1732,7 +1732,7 @@ __feeditems__
 </tr>""", file=f)
 		feeds = [(feed.get_html_name(config).lower(), feed)
 		         for feed in list(self.feeds.values())]
-		feeds.sort()
+		# feeds.sort()
 		for (key, feed) in feeds:
 			print('<tr class="feedsrow">', file=f)
 			print('<td>' + feed.get_html_link(config) + '</td>', file=f)
