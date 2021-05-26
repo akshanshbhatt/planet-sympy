@@ -184,8 +184,8 @@ def select_detail(details):
 			score = 0
 		if detail["value"] != "":
 			ds.append((score, detail))
-	print(ds)
-	ds.sort()
+	# print(ds)
+	# ds.sort()
 
 	if len(ds) == 0:
 		return None
@@ -262,10 +262,10 @@ def fill_template(template, bits):
 	def write(s):
 		if not False in if_stack:
 			f.write(str(s))
-	print(template_re)
-	print(type(template_re))
-	print(template)
-	print(type(template))
+	# print(template_re)
+	# print(type(template_re))
+	# print(template)
+	# print(type(template))
 	for part in template_re.split(template.decode()):
 		if part.startswith("__") and part.endswith("__"):
 			key = part[2:-2]
