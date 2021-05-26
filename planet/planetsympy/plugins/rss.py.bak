@@ -41,7 +41,7 @@
 # "sortbyfeeddate true" in your config file too.
 
 import os, time, cgi
-import html.entities
+import htmlentitydefs
 import rawdoglib.plugins, rawdoglib.rawdog
 import libxml2
 
@@ -54,8 +54,8 @@ from xml.sax.saxutils import escape, unescape
 # &aacute; in define_name if they don't know how to input Unicode characters.
 # HACK: The unicode characters currently must be re-encoded as utf-8.
 htmlchars = {}
-for k, v in list(html.entities.name2codepoint.items()):
-    htmlchars['&%s;' % k] = chr(v).encode('utf8')
+for k, v in htmlentitydefs.name2codepoint.items():
+    htmlchars['&%s;' % k] = unichr(v).encode('utf8')
 
 def rfc822_date(tm):
     """Format a GMT timestamp as returned by time.gmtime() in RFC822 format.
@@ -162,7 +162,7 @@ class RSS_Feed:
             feed = rawdog.feeds[article.feed]
             itembits = {}
             toAdd = True;
-            for name, value in list(feed.args.items()):
+            for name, value in feed.args.items():
                 if name.startswith("define_"):
                     itembits[name[7:]] = value
                     if "feedclass" in itembits:
