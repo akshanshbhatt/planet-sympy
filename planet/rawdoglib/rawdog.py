@@ -318,7 +318,7 @@ def write_ascii(f, s, config):
 
 def short_hash(s):
 	"""Return a human-manipulatable 'short hash' of a string."""
-	s = str(s, encoding='utf-8')
+	s = str(s)
 	return hashlib.sha1(s.encode('utf-8')).hexdigest()[-8:]
 
 def ensure_unicode(value, encoding):
