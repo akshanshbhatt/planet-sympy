@@ -74,7 +74,7 @@ def safe_ftime(format, t):
 	"""Format a time value into a string in the current locale (as
 	time.strftime), but encode the result as ASCII HTML."""
 	try:
-		u = str(time.strftime(format, t), get_system_encoding())
+		u = str(time.strftime(format, t))
 	except ValueError as e:
 		u = "(bad time %s; %s)" % (repr(t), str(e))
 	return encode_references(u)
