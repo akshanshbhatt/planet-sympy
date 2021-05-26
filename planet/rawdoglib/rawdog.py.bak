@@ -199,9 +199,9 @@ def detail_to_html(details, inline, config, force_preformatted=False):
 		return None
 
 	if force_preformatted:
-		html = "<pre>" + html.escape(detail["value"]) + "</pre>"
+		html = "<pre>" + escape_html(detail["value"]) + "</pre>"
 	elif detail["type"] == "text/plain":
-		html = html.escape(detail["value"])
+		html = escape_html(detail["value"])
 	else:
 		html = detail["value"]
 
@@ -234,14 +234,14 @@ def author_to_html(entry, feedurl, config):
 	if url is None:
 		html = name
 	else:
-		html = "<a href=\"" + html.escape(url) + "\">" + html.escape(name) + "</a>"
+		html = "<a href=\"" + escape_html(url) + "\">" + escape_html(name) + "</a>"
 
 	# We shouldn't need a base URL here anyway.
 	return sanitise_html(html, feedurl, True, config)
 
 def string_to_html(s, config):
 	"""Convert a string to HTML."""
-	return sanitise_html(html.escape(s), "", True, config)
+	return sanitise_html(escape_html(s), "", True, config)
 
 template_re = re.compile(r'(__[^_].*?__)')
 def fill_template(template, bits):
@@ -1682,7 +1682,7 @@ __feeditems__
 		bits["feed_title"] = feed.get_html_link(config)
 		bits["feed_title_no_link"] = detail_to_html(feed.feed_info.get("title_detail"), True, config)
 		bits["feed_url"] = string_to_html(feed.url, config)
-		bits["feed_icon"] = '<a class="xmlbutton" href="' + html.escape(feed.url) + '">XML</a>'
+		bits["feed_icon"] = '<a class="xmlbutton" href="' + escape_html(feed.url) + '">XML</a>'
 		bits["feed_last_update"] = format_time(feed.last_update, config)
 		bits["feed_next_update"] = format_time(feed.last_update + feed.period, config)
 		return bits
@@ -1730,7 +1730,7 @@ __feeditems__
 		for (key, feed) in feeds:
 			print >>f, '<tr class="feedsrow">'
 			print >>f, '<td>' + feed.get_html_link(config) + '</td>'
-			print >>f, '<td><a class="xmlbutton" href="' + html.escape(feed.url) + '">XML</a></td>'
+			print >>f, '<td><a class="xmlbutton" href="' + escape_html(feed.url) + '">XML</a></td>'
 			print >>f, '<td>' + format_time(feed.last_update, config) + '</td>'
 			print >>f, '<td>' + format_time(feed.last_update + feed.period, config) + '</td>'
 			print >>f, '</tr>'
