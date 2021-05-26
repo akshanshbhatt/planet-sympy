@@ -9,7 +9,7 @@ RUN apt-get update -y \
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && pip3 install --upgrade setuptools pip3 \
+    && pip3 install --upgrade setuptools pip \
     && hash -r \
     && pip install --no-cache-dir feedparser schedule
 
