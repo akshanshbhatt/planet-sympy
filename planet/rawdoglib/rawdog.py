@@ -298,7 +298,7 @@ def load_file(name):
 			raise ConfigError("Can't read template file: " + name)
 
 		try:
-			data = data.encode(get_system_encoding())
+			data = data
 		except UnicodeDecodeError as e:
 			raise ConfigError("Character encoding problem in template file: " + name + ": " + str(e))
 
@@ -318,6 +318,7 @@ def write_ascii(f, s, config):
 
 def short_hash(s):
 	"""Return a human-manipulatable 'short hash' of a string."""
+	s.encode('utf-8')
 	return hashlib.sha1(s).hexdigest()[-8:]
 
 def ensure_unicode(value, encoding):
@@ -942,7 +943,7 @@ class Config:
 			f = open(filename, "r")
 			for line in f:
 				try:
-					line = line.encode(get_system_encoding()) # str(line, get_system_encoding())
+					line = line 
 				except UnicodeDecodeError as e:
 					raise ConfigError("Character encoding problem in config file: " + filename + ": " + str(e))
 
