@@ -261,7 +261,7 @@ def fill_template(template, bits):
 	def write(s):
 		if not False in if_stack:
 			f.write(s)
-	for part in template_re.split(template):
+	for part in template_re.decode().split(template.decode()):
 		if part.startswith("__") and part.endswith("__"):
 			key = part[2:-2]
 			if key.startswith("if_"):
