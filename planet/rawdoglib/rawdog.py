@@ -154,7 +154,7 @@ def sanitise_html(html, baseurl, inline, config):
 		html = output[output.find("<body>") + 6
 		              : output.rfind("</body>")].strip()
 
-	html = html.decode("UTF-8")
+	html = html #html.decode("UTF-8")
 	box = Box(html)
 	call_hook("clean_html", config, box, baseurl, inline)
 	return box.value
