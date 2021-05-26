@@ -43,7 +43,7 @@
 import os, time, cgi
 import html.entities
 import rawdoglib.plugins, rawdoglib.rawdog
-import libxml2
+import lxml
 
 from rawdoglib.rawdog import detail_to_html, string_to_html
 from time import gmtime, strftime
@@ -135,7 +135,7 @@ class RSS_Feed:
         return True
 
     def write_rss(self, rawdog, config, articles):
-        doc = libxml2.newDoc("1.0")
+        doc = lxml.newDoc("1.0")
 
         rss = doc.newChild(None, 'rss', None)
         rss.setProp('version', "2.0")
@@ -179,7 +179,7 @@ class RSS_Feed:
         doc.freeDoc()
 
     def write_foaf(self, rawdog, config):
-        doc = libxml2.newDoc("1.0")
+        doc = lxml.newDoc("1.0")
 
         xml = doc.newChild(None, 'rdf:RDF', None)
         xml.setProp('xmlns:rdf', "http://www.w3.org/1999/02/22-rdf-syntax-ns#")
@@ -209,7 +209,7 @@ class RSS_Feed:
         doc.freeDoc()
 
     def write_opml(self, rawdog, config):
-        doc = libxml2.newDoc("1.0")
+        doc = lxml.newDoc("1.0")
 
         xml = doc.newChild(None, 'opml', None)
         xml.setProp('version', "2.0")

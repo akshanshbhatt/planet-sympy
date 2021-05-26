@@ -4,12 +4,11 @@ RUN apt-get update -y \
     && apt-get upgrade -y \
     && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
         python3-pip \
-        python-libxml2 \
         openssh-client \
         git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-    && pip3 install --upgrade setuptools pip \
+    && pip3 install --upgrade setuptools pip lxml \
     && hash -r \
     && pip install --no-cache-dir feedparser schedule
 
