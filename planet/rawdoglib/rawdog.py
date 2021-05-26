@@ -27,7 +27,7 @@ from rawdoglib.plugins import Box, call_hook, load_plugins
 from io import StringIO
 import base64
 import calendar
-import cgi
+import html
 import feedparser
 import getopt
 import hashlib
@@ -199,9 +199,9 @@ def detail_to_html(details, inline, config, force_preformatted=False):
 		return None
 
 	if force_preformatted:
-		html = "<pre>" + cgi.escape(detail["value"]) + "</pre>"
+		html = "<pre>" + html.escape(detail["value"]) + "</pre>"
 	elif detail["type"] == "text/plain":
-		html = cgi.escape(detail["value"])
+		html = html.escape(detail["value"])
 	else:
 		html = detail["value"]
 
@@ -234,14 +234,14 @@ def author_to_html(entry, feedurl, config):
 	if url is None:
 		html = name
 	else:
-		html = "<a href=\"" + cgi.escape(url) + "\">" + cgi.escape(name) + "</a>"
+		html = "<a href=\"" + html.escape(url) + "\">" + html.escape(name) + "</a>"
 
 	# We shouldn't need a base URL here anyway.
 	return sanitise_html(html, feedurl, True, config)
 
 def string_to_html(s, config):
 	"""Convert a string to HTML."""
-	return sanitise_html(cgi.escape(s), "", True, config)
+	return sanitise_html(html.escape(s), "", True, config)
 
 template_re = re.compile(r'(__[^_].*?__)')
 def fill_template(template, bits):
@@ -1683,7 +1683,7 @@ __feeditems__
 		bits["feed_title"] = feed.get_html_link(config)
 		bits["feed_title_no_link"] = detail_to_html(feed.feed_info.get("title_detail"), True, config)
 		bits["feed_url"] = string_to_html(feed.url, config)
-		bits["feed_icon"] = '<a class="xmlbutton" href="' + cgi.escape(feed.url) + '">XML</a>'
+		bits["feed_icon"] = '<a class="xmlbutton" href="' + html.escape(feed.url) + '">XML</a>'
 		bits["feed_last_update"] = format_time(feed.last_update, config)
 		bits["feed_next_update"] = format_time(feed.last_update + feed.period, config)
 		return bits
@@ -1731,7 +1731,7 @@ __feeditems__
 		for (key, feed) in feeds:
 			print('<tr class="feedsrow">', file=f)
 			print('<td>' + feed.get_html_link(config) + '</td>', file=f)
-			print('<td><a class="xmlbutton" href="' + cgi.escape(feed.url) + '">XML</a></td>', file=f)
+			print('<td><a class="xmlbutton" href="' + html.escape(feed.url) + '">XML</a></td>', file=f)
 			print('<td>' + format_time(feed.last_update, config) + '</td>', file=f)
 			print('<td>' + format_time(feed.last_update + feed.period, config) + '</td>', file=f)
 			print('</tr>', file=f)

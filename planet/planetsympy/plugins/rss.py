@@ -40,7 +40,7 @@
 # If you're using rawdog to produce a planet page, you'll probably want to have
 # "sortbyfeeddate true" in your config file too.
 
-import os, time, cgi
+import os, time, html
 import html.entities
 import rawdoglib.plugins, rawdoglib.rawdog
 import lxml
