@@ -134,7 +134,8 @@ class RSS_Feed:
 
         return True
 
-    # def write_rss(self, rawdog, config, articles):
+    def write_rss(self, rawdog, config, articles):
+        return True # Added
     #     doc = lxml.newDoc("1.0")
 
     #     rss = doc.newChild(None, 'rss', None)
@@ -178,7 +179,8 @@ class RSS_Feed:
     #     doc.saveFormatFile(self.options["outputxml"], 1)
     #     doc.freeDoc()
 
-    # def write_foaf(self, rawdog, config):
+    def write_foaf(self, rawdog, config):
+        return True # Added
     #     doc = lxml.newDoc("1.0")
 
     #     xml = doc.newChild(None, 'rdf:RDF', None)
@@ -208,7 +210,8 @@ class RSS_Feed:
     #     doc.saveFormatFile(self.options["outputfoaf"], 1)
     #     doc.freeDoc()
 
-    # def write_opml(self, rawdog, config):
+    def write_opml(self, rawdog, config):
+        return True # Added
     #     doc = lxml.newDoc("1.0")
 
     #     xml = doc.newChild(None, 'opml', None)
