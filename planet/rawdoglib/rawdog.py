@@ -260,7 +260,7 @@ def fill_template(template, bits):
 	if_stack = []
 	def write(s):
 		if not False in if_stack:
-			f.write(s.decode())
+			f.write(str(s))
 	print(template_re)
 	print(type(template_re))
 	print(template)
