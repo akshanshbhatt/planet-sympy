@@ -298,7 +298,7 @@ def load_file(name):
 			raise ConfigError("Can't read template file: " + name)
 
 		try:
-			data = data
+			data = data.encode(get_system_encoding())
 		except UnicodeDecodeError as e:
 			raise ConfigError("Character encoding problem in template file: " + name + ": " + str(e))
 
@@ -942,7 +942,7 @@ class Config:
 			f = open(filename, "r")
 			for line in f:
 				try:
-					line = line # line.decode(get_system_encoding())
+					line = line.encode(get_system_encoding()) # str(line, get_system_encoding())
 				except UnicodeDecodeError as e:
 					raise ConfigError("Character encoding problem in config file: " + filename + ": " + str(e))
 
